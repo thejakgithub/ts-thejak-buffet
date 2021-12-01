@@ -2,11 +2,11 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSquare } from "@fortawesome/free-solid-svg-icons";
 import { Container } from "react-bootstrap";
 
-interface QtyTableProps {
-  qtyTable: number;
+interface QtyTablesProps {
+  qtyTables: number;
 }
 
-export const TableStatus = ({ qtyTable }: QtyTableProps) => {
+export const TableStatus = ({ qtyTables }: QtyTablesProps) => {
   return (
     <Container>
       <div>
@@ -17,7 +17,7 @@ export const TableStatus = ({ qtyTable }: QtyTableProps) => {
         <FontAwesomeIcon icon={faSquare} className="text-danger me-2" />
         <label className="text-white">โต๊ะไม่ว่าง</label>
       </div>
-      <h2 className="my-3 text-white">โต๊ะว่าง {qtyTable} โต๊ะ</h2>
+      <h2 className="my-3 text-white">โต๊ะว่าง {qtyTables} โต๊ะ</h2>
     </Container>
   );
 };

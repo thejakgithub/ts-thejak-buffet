@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import tables from "./data/tables";
@@ -25,21 +25,26 @@ function App() {
   const [modalShow, setModalShow] = useState(false);
   const [tablePayment, setTablePayment] = useState(1);
 
-  const [qtyTable, setQtyTable] = useState<number>(() => {
-    const saveQtyTable = localStorage.getItem("qtyTable");
+  const [qtyTables, setQtyTables] = useState<number>(() => {
+    const saveqtyTables = localStorage.getItem("qtyTables");
 
-    if (saveQtyTable) {
-      return JSON.parse(saveQtyTable);
+    if (saveqtyTables) {
+      return JSON.parse(saveqtyTables);
     } else {
       return 8;
     }
   });
 
+  useEffect(() => {
+    localStorage.setItem("numberTables", JSON.stringify(numberTables));
+    localStorage.setItem("qtyTables", JSON.stringify(qtyTables));
+  }, [numberTables]);
+
   const onTables = (no: number) => {
     const newNumberTables = numberTables;
     newNumberTables.forEach((numberTable) => {
       if (numberTable.no === no) numberTable.color = "danger";
-      setQtyTable(qtyTable - 1);
+      setQtyTables(qtyTables - 1);
     });
     setNumberTables([...newNumberTables]);
   };
@@ -48,7 +53,7 @@ function App() {
     const newNumberTables = numberTables;
     newNumberTables.forEach((numberTable) => {
       if (numberTable.no === no) numberTable.color = "success";
-      setQtyTable(qtyTable + 1);
+      setQtyTables(qtyTables + 1);
     });
     setNumberTables([...newNumberTables]);
   };
@@ -70,7 +75,7 @@ function App() {
           />
         </Col>
         <Col sm={4} lg={3}>
-          <TableStatus qtyTable={qtyTable} />
+          <TableStatus qtyTables={qtyTables} />
         </Col>
         <ModalPayment
           show={modalShow}

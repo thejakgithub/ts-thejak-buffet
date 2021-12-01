@@ -11,7 +11,20 @@
   font-size: 2rem;
 }
 
-@media screen and (max-width: 680px) and (orientation: portrait) {
+@media screen and (max-width: 330px) and (orientation: portrait) {
+  .tables__container {
+    margin: 0;
+  }
+  .tables__btn {
+    width: 6.5rem;
+    height: 5rem;
+    font-size: 1.8rem;
+    margin: 0 1rem;
+    margin-bottom: 1.8rem;
+  }
+}
+
+@media screen and (max-width: 680px) and (min-width: 331px) and (orientation: portrait) {
   .tables__container {
     margin: 0;
   }
